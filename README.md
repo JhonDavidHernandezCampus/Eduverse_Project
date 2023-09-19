@@ -1,8 +1,21 @@
-# React + Vite
+# Eduvverse
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Objectives Specific
 
-Currently, two official plugins are available:
+Develop an educational learning platform that facilitates the acquisition of knowledge through audiovisual content, promoting an interactive and enriching environment for users.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+| Objectives General                                           |
+| ------------------------------------------------------------ |
+| Create an application in which some courses and their videos can be viewed. |
+| Have the functionality of being able to comment on the videos. |
+| Creation of a creative and intuitive interface for users.    |
+
+
+
+## Project description
+
+This project aims to create a free course platform using React, inspired by the basic operation of Udemy. Our platform will allow users to access a wide range of online courses for free, providing an accessible and flexible learning experience, just like Udemy, but without associated costs.
+
+We have the proposal to develop a free course platform based on React, taking as inspiration the fundamental operation of the successful Udemy platform. Our vision is to provide users with an accessible and versatile online learning experience, similar to what Udemy offers, but without any associated costs. The platform will offer a wide variety of courses in various areas, from technology to art and music, allowing students to access quality resources without financial barriers. Additionally, we plan to incorporate interactive features and progress tracking tools to improve the user experience and encourage effective and personalized learning.
+
