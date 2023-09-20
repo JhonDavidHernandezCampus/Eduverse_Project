@@ -1,0 +1,161 @@
+
+// ! ROLS
+// creacion de la colecion rols
+use('db_eduvverse');
+db.createCollection('rols', {
+    validator: {
+        $jsonSchema: {
+            bsonType: 'object',
+            required: ['id_rol', 'name_rol'],
+            properties: {
+                id_rol: {
+                    bsonType: 'int',
+                },
+                name_rol: {
+                    bsonType: 'int',
+                    pattern:'^[a-zA-Zz ]+$'
+                },
+            }
+        }
+    }
+});
+use('db_eduvverse');
+db.rols.createIndex(
+    {id_rol:1,name_rol:1},
+    {unique:true}
+);
+
+
+// ! USER
+// creacion de la colecion user
+use('db_eduvverse');
+db.createCollection('user', {
+    validator: {
+        $jsonSchema: {
+            bsonType: 'object',
+            required: ['id_user', 'id_rol', 'name_user', 'email_user',],
+            properties: {
+                id_user: {
+                    bsonType: 'int',
+                },
+                id_rol: {
+                    bsonType: 'int',
+                },
+                name_user: {
+                    bsonType: 'string',
+                    pattern: '^[a-zA-Z ]+$'
+                },
+                email_user: {
+                    bsonType: 'string',
+                },
+            }
+        }
+    }
+});
+
+use('db_eduvverse');
+db.user.createIndex(
+    { id_user: 1, name_user: 1 },
+    { unique: true }
+);
+
+
+// ! CURSE
+// creacion de la colecion curse
+use('db_eduvverse');
+db.createCollection('curse', {
+    validator:{
+        $jsonSchema:{
+            bsonType:'object',
+            required:['id_curse','name_curse','duration_curse','tipe_curse',],
+            properties:{
+                id_curse:{
+                    bsonType:'int',
+                },
+                name_curse:{
+                    bsonType:'string',
+                },
+                duration_curse:{
+                    bsonType:'int',
+                },
+                tipe_curse:{
+                    bsonType:'string',
+                },
+            }
+        }
+    }
+});
+use('db_eduvverse');
+db.curse.createIndex(
+    {id_curse:1},
+    {unique:true}
+);
+
+
+// ! VIDEO
+// creacion de la colecion video
+use('db_eduvverse');
+db.createCollection('video',{
+    validator:{
+        $jsonSchema:{
+            bsonType:'object',
+            required:['id_video','id_curse','duration_video','link_video'],
+            properties:{
+                id_video:{
+                    bsonType:'int',
+                },
+                id_curse:{
+                    bsonType:'int',
+                },
+                duration_video:{
+                    bsonType:'int',
+                },
+                link_video:{
+                    bsonType:'string',
+                },
+            }
+        }
+        
+    }
+});
+use('db_eduvverse');
+db.video.createIndex(
+    {id_video:1},
+    {unique:true}
+);
+
+
+// ! COMMENTS
+// creacion de la colecion comments
+use('db_eduvverse');
+db.createCollection('comments', {
+    validator:{
+        $jsonSchema:{
+            bsonType:'object',
+            required:['id_com','id_video','id_user','comment','fecha_com'],
+            properties:{
+                id_com:{
+                    bsonType:'int',
+                },
+                id_video:{
+                    bsonType:'int',
+                },
+                id_user:{
+                    bsonType:'int',
+                },
+                comment:{
+                    bsonType:'string',
+                },
+                fecha_com:{
+                    bsonType:'date',
+                },
+            }
+        }
+    }
+});
+use('db_eduvverse');
+db.comments.createIndex(
+    {id_com:1},
+    {unique:true}
+);
+
