@@ -8,7 +8,7 @@ import { NextUIProvider } from '@nextui-org/react';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <NextUIProvider>
-      <main className=''>
+      <main className='padreMain'>
         <RouterProvider router={router} />
       </main>
     </NextUIProvider>

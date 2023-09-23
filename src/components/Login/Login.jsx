@@ -10,9 +10,15 @@ import { Button } from "@nextui-org/react";
 
 export const Login = () => {
     return <>
-        <div className=" bg-black w-full h-full ">
-            <Button color="primary"> Button </Button>
-            <div>Text color changes based on theme</div>
+        <div className="flex p-24" id="container">
+            <div className="flex bg-slate-300 bg-opacity-30 w-full rounded-[40px]">
+                <div className=" w-2/4 " id="post">
+
+                </div>
+                <div className=" w-2/4" id="login">
+
+                </div>
+            </div>
         </div>
     </>
 }
