@@ -23,7 +23,9 @@ export const Login = () => {
 
     const login = async()=> {
         try {
-            let resp = await fetch(`http://127.1.1.10:9001/login`);
+            // let resp = await fetch(`http://127.1.1.10:9001/login`);
+            // console.log(resp);
+            window.location.href = "http://127.1.1.10:9001/login";
         } catch (error) {
             
         }
