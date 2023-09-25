@@ -25,6 +25,6 @@ dist-ssr
 
 
 # Variables y mas 
-
+./package-lock.json
 .env
 
