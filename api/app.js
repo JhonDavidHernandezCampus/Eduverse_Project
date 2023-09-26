@@ -26,6 +26,8 @@ app.use(passport.session());
 // * Middleware of the aplication
 
 app.get('/home',(req,res)=>{
+    console.log(req.user, "user");
+    console.log("de aqui para abajo req",req, "");
     res.json({Message:"Usuario logueado", status:200});
     console.log("estamos logeados");
 });

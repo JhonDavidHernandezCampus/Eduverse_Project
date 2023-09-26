@@ -26,8 +26,8 @@ passport.deserializeUser((user, done) => {
 passport.use(new Strategy({
     clientID: process.env.DIS_ID,
     clientSecret: process.env.DIS_CLIENT,
-    callbackURL: `http://${process.env.VITE_HOST}:${process.env.VITE_PORT}/dashboard`,
-    //callbackURL: `http://${host.localhost}:${host.port}/auth/redirect`, // Esta es la propiedad que me retorna a otra pagina una vez el usuario de aseptar
+    //callbackURL: `http://${process.env.VITE_HOST}:${process.env.VITE_PORT}/dashboard`,
+    callbackURL: `http://${host.localhost}:${host.port}/auth/redirect`, // Esta es la propiedad que me retorna a otra pagina una vez el usuario de aseptar
     scope: ['identify', 'guilds', 'email', 'connections']
 }, async (acessToken, refreshToken, profile, done) => {
     try {
