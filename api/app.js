@@ -9,7 +9,7 @@ const app = Express();
 
 // ? Middleware basic
 
-app.use(cors())
+app.use(cors("http://127.1.1.1:5226"));
 app.use(Express.json());
 app.use(Express.text());
 
@@ -26,7 +26,7 @@ app.use(passport.session());
 // * Middleware of the aplication
 
 app.get('/home',(req,res)=>{
-    res.json({Message:"dashboard"});
+    res.json({Message:"Usuario logueado", status:200});
     console.log("estamos logeados");
 });
 

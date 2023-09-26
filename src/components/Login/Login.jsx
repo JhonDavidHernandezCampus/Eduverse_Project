@@ -20,13 +20,23 @@ import logo from "./../../assets/imglogo.png";
 
 
 export const Login = () => {
+
+    const login = async()=> {
+        try {
+            // let resp = await fetch(`http://127.1.1.10:9001/login`);
+            // console.log(resp);
+            window.location.href = "http://127.1.1.10:9001/login";
+        } catch (error) {
+            
+        }
+    }
     return <>
         <div className="flex p-24" id="container">
             <div className="flex backdrop-blur-sm bg-white/30 w-full rounded-[40px]">
                 <div className="flex flex-col justify-center items-center w-5/12 bg-black/60  rounded-l-[40px] " id="post">
                     <h1 className="text-6xl mb-20 text-gray-100">Login</h1>
                     <div className="flex flex-col w-full items-center">
-                        <Button color="secondary" className="mt-7 w-7/12 text-1xl h-14 	"> Discord <FaDiscord style={{ fontSize: '30px' }} /> </Button>
+                        <Button color="secondary" className="mt-7 w-7/12 text-1xl h-14 " onClick={login} > Discord <FaDiscord style={{ fontSize: '30px' }} /> </Button>
                         <Button color="default" className="mt-7 w-7/12 text-1xl   h-14 	"> Gloogle <FcGoogle style={{ fontSize: '30px' }} /> </Button>
                         <Button color="primary" className="mt-7 w-7/12 text-1xl   h-14 	"> Apple   <BiLogoApple style={{ fontSize: '30px' }} /></Button>
                     </div>

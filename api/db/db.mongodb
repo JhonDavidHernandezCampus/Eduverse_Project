@@ -13,7 +13,7 @@ db.createCollection('rols', {
                 },
                 name_rol: {
                     bsonType: 'int',
-                    pattern:'^[a-zA-Zz ]+$'
+                    pattern: '^[a-zA-Zz ]+$'
                 },
             }
         }
@@ -21,8 +21,8 @@ db.createCollection('rols', {
 });
 use('db_eduvverse');
 db.rols.createIndex(
-    {id_rol:1,name_rol:1},
-    {unique:true}
+    { id_rol: 1, name_rol: 1 },
+    { unique: true }
 );
 
 
@@ -33,10 +33,10 @@ db.createCollection('user', {
     validator: {
         $jsonSchema: {
             bsonType: 'object',
-            required: ['id_user', 'id_rol', 'name_user', 'email_user',],
+            required: ['id_user', 'id_rol', 'name_user', 'servers', 'email_user',],
             properties: {
                 id_user: {
-                    bsonType: 'int',
+                    bsonType: 'string',
                 },
                 id_rol: {
                     bsonType: 'int',
@@ -44,6 +44,9 @@ db.createCollection('user', {
                 name_user: {
                     bsonType: 'string',
                     pattern: '^[a-zA-Z ]+$'
+                },
+                servers: {
+                    bsonType: 'array',
                 },
                 email_user: {
                     bsonType: 'string',
@@ -59,27 +62,63 @@ db.user.createIndex(
     { unique: true }
 );
 
+use('db_eduvverse');
+db.user.insert({
+    id_user: "901324946398117899",
+    id_rol: 1,
+    name_user: "Jhon David Hernandez Ferrer",
+    servers: [
+        {
+            id: '662267976984297473',
+            name: 'Midjourney',
+            icon: '39128f6c9fc33f4c95a27d4c601ad7db',
+            owner: false,
+            permissions: 101043712,
+            permissions_new: '141740464262656',
+            features: [Array]
+        },
+        {
+            id: '904263341411815485',
+            name: 'Peliculas',
+            icon: '67ffa2ddc07660814bc318eb92e0d8f1',
+            owner: false,
+            permissions: 104320577,
+            permissions_new: '559623605571137',
+            features: []
+        },
+        {
+            id: '989166677390426132',
+            name: 'Leonardo.Ai',
+            icon: '13c97c36cd88ea7cd4841c486496e544',
+            owner: false,
+            permissions: 37080641,
+            permissions_new: '427029307969089',
+            features: [Array]
+        },
+    ],
+    email_user:"jhondhernandez@uts.edu.co"
+});
 
 // ! CURSE
 // creacion de la colecion curse
 use('db_eduvverse');
 db.createCollection('curse', {
-    validator:{
-        $jsonSchema:{
-            bsonType:'object',
-            required:['id_curse','name_curse','duration_curse','tipe_curse',],
-            properties:{
-                id_curse:{
-                    bsonType:'int',
+    validator: {
+        $jsonSchema: {
+            bsonType: 'object',
+            required: ['id_curse', 'name_curse', 'duration_curse', 'tipe_curse',],
+            properties: {
+                id_curse: {
+                    bsonType: 'int',
                 },
-                name_curse:{
-                    bsonType:'string',
+                name_curse: {
+                    bsonType: 'string',
                 },
-                duration_curse:{
-                    bsonType:'int',
+                duration_curse: {
+                    bsonType: 'int',
                 },
-                tipe_curse:{
-                    bsonType:'string',
+                tipe_curse: {
+                    bsonType: 'string',
                 },
             }
         }
@@ -87,41 +126,41 @@ db.createCollection('curse', {
 });
 use('db_eduvverse');
 db.curse.createIndex(
-    {id_curse:1},
-    {unique:true}
+    { id_curse: 1 },
+    { unique: true }
 );
 
 
 // ! VIDEO
 // creacion de la colecion video
 use('db_eduvverse');
-db.createCollection('video',{
-    validator:{
-        $jsonSchema:{
-            bsonType:'object',
-            required:['id_video','id_curse','duration_video','link_video'],
-            properties:{
-                id_video:{
-                    bsonType:'int',
+db.createCollection('video', {
+    validator: {
+        $jsonSchema: {
+            bsonType: 'object',
+            required: ['id_video', 'id_curse', 'duration_video', 'link_video'],
+            properties: {
+                id_video: {
+                    bsonType: 'int',
                 },
-                id_curse:{
-                    bsonType:'int',
+                id_curse: {
+                    bsonType: 'int',
                 },
-                duration_video:{
-                    bsonType:'int',
+                duration_video: {
+                    bsonType: 'int',
                 },
-                link_video:{
-                    bsonType:'string',
+                link_video: {
+                    bsonType: 'string',
                 },
             }
         }
-        
+
     }
 });
 use('db_eduvverse');
 db.video.createIndex(
-    {id_video:1},
-    {unique:true}
+    { id_video: 1 },
+    { unique: true }
 );
 
 
@@ -129,25 +168,25 @@ db.video.createIndex(
 // creacion de la colecion comments
 use('db_eduvverse');
 db.createCollection('comments', {
-    validator:{
-        $jsonSchema:{
-            bsonType:'object',
-            required:['id_com','id_video','id_user','comment','fecha_com'],
-            properties:{
-                id_com:{
-                    bsonType:'int',
+    validator: {
+        $jsonSchema: {
+            bsonType: 'object',
+            required: ['id_com', 'id_video', 'id_user', 'comment', 'fecha_com'],
+            properties: {
+                id_com: {
+                    bsonType: 'int',
                 },
-                id_video:{
-                    bsonType:'int',
+                id_video: {
+                    bsonType: 'int',
                 },
-                id_user:{
-                    bsonType:'int',
+                id_user: {
+                    bsonType: 'int',
                 },
-                comment:{
-                    bsonType:'string',
+                comment: {
+                    bsonType: 'string',
                 },
-                fecha_com:{
-                    bsonType:'date',
+                fecha_com: {
+                    bsonType: 'date',
                 },
             }
         }
@@ -155,7 +194,7 @@ db.createCollection('comments', {
 });
 use('db_eduvverse');
 db.comments.createIndex(
-    {id_com:1},
-    {unique:true}
+    { id_com: 1 },
+    { unique: true }
 );
 
