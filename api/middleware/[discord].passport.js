@@ -12,15 +12,15 @@ dotenv.config();
 console.log("almenos se que esto se jecuta");
 const host = JSON.parse(process.env.SERVER);
 
-//como guardamos la sesion y como la retornamos
+//como guardamos la sesion, se ejecuta cuando nos autenticamos
 passport.serializeUser((user, done) => {
     //console.log(user);
     done(null, user)
 });
-
+// esta se ejecuta cuando requiero los datos del usuario req.user me retorna lo que le coloque en la funcion done
 passport.deserializeUser((user, done) => {
     //console.log(user);
-    done(null, user.id)
+    done(null, user)
 });
 
 passport.use(new Strategy({

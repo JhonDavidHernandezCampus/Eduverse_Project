@@ -24,16 +24,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // * Middleware of the aplication
-
-app.get('/home',(req,res)=>{
-    console.log(req.user, "user");
-    console.log("de aqui para abajo req",req, "");
-    res.json({Message:"Usuario logueado", status:200});
-    console.log("estamos logeados");
-});
-
 app.use(router_login);
-
+app.get('/get',(req,res)=>{
+    res.send("hola")
+    console.log(req.user);
+})
 
 
 export default app;
