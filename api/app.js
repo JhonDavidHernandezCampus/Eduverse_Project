@@ -1,9 +1,10 @@
 import Express from "express";
 import cors from 'cors';
-import router_login from "./routes/[login].router.js";
 import session from "express-session";
 import passport from "passport";
-
+// *Importes of the routers
+import router_login from "./routes/[login].router.js";
+import router_comment from "./routes/[comment].router.js";
 
 const app = Express();
 
@@ -25,11 +26,15 @@ app.use(passport.session());
 
 // * Middleware of the aplication
 app.use(router_login);
-app.get('/get',(req,res)=>{
-    res.send("hola")
-    console.log(req.user);
+app.use('/comment',router_comment);
+app.get('/',(req,res)=>{
+    res.json({server:true, message:"Server listening"});
 })
 
 
-export default app;
+app.get('/get',(req,res)=>{
+    res.send("datos respondidos por consola XD")
+    console.log(req.user);
+})
 
+export default app;

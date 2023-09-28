@@ -33,7 +33,7 @@ db.createCollection('user', {
     validator: {
         $jsonSchema: {
             bsonType: 'object',
-            required: ['id_user', 'id_rol', 'name_user', 'servers', 'email_user',],
+            required: ['id_user', 'id_rol', 'name_user', 'servers', 'email_user', 'avatar_user'],
             properties: {
                 id_user: {
                     bsonType: 'string',
@@ -51,6 +51,9 @@ db.createCollection('user', {
                 email_user: {
                     bsonType: 'string',
                 },
+                avatar_user: {
+                    bsonType: 'string'
+                }
             }
         }
     }
@@ -63,7 +66,7 @@ db.user.createIndex(
 );
 
 use('db_eduvverse');
-db.user.insert({
+db.user.insertOne({
     id_user: "901324946398117899",
     id_rol: 1,
     name_user: "Jhon David Hernandez Ferrer",
@@ -96,7 +99,8 @@ db.user.insert({
             features: [Array]
         },
     ],
-    email_user:"jhondhernandez@uts.edu.co"
+    email_user: "jhondhernandez@uts.edu.co",
+    avatar_user: "d10692efaa653cb4d5e402e95bef6520"
 });
 
 // ! CURSE
@@ -130,7 +134,6 @@ db.curse.createIndex(
     { unique: true }
 );
 
-
 // ! VIDEO
 // creacion de la colecion video
 use('db_eduvverse');
@@ -154,7 +157,6 @@ db.createCollection('video', {
                 },
             }
         }
-
     }
 });
 use('db_eduvverse');
@@ -180,7 +182,7 @@ db.createCollection('comments', {
                     bsonType: 'int',
                 },
                 id_user: {
-                    bsonType: 'int',
+                    bsonType: 'string',
                 },
                 comment: {
                     bsonType: 'string',
@@ -192,9 +194,18 @@ db.createCollection('comments', {
         }
     }
 });
+
 use('db_eduvverse');
 db.comments.createIndex(
     { id_com: 1 },
     { unique: true }
 );
 
+use('db_eduvverse');
+db.comments.insertOne({
+    id_com: 1,
+    id_video: 12,
+    id_user: 'ksvknsvksdvksmdv',
+    comment: 'estoy probando',
+    fecha_com: new Date()
+});
