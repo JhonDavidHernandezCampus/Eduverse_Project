@@ -43,7 +43,7 @@ db.createCollection('user', {
                 },
                 name_user: {
                     bsonType: 'string',
-                    pattern: '^[a-zA-Z ]+$'
+                    pattern: '^[a-zA-Z0-9 _$%&#!?¡]+$'
                 },
                 servers: {
                     bsonType: 'array',
@@ -67,9 +67,9 @@ db.user.createIndex(
 
 use('db_eduvverse');
 db.user.insertOne({
-    id_user: "901324946398117899",
+    id_user: '901324946398117899',
     id_rol: 1,
-    name_user: "Jhon David Hernandez Ferrer",
+    name_user: 'jhonh_24',
     servers: [
         {
             id: '662267976984297473',
@@ -98,9 +98,45 @@ db.user.insertOne({
             permissions_new: '427029307969089',
             features: [Array]
         },
+        {
+            id: '1096646288428236830',
+            name: 'El servidor de Hernadez Ferrer',
+            icon: null,
+            owner: true,
+            permissions: 2147483647,
+            permissions_new: '562949953421311',
+            features: []
+        },
+        {
+            id: '1099403753653817475',
+            name: 'Hackathon iHealth FCV23',
+            icon: 'fcc4f58dfb9645f7687c7d5a412e8cbf',
+            owner: false,
+            permissions: 104189505,
+            permissions_new: '533235326373441',
+            features: [Array]
+        },
+        {
+            id: '1101581994355347526',
+            name: 'CampusLands 🚀',
+            icon: 'bd6652b400bae9a8a4da13ebc83a8686',
+            owner: false,
+            permissions: 104189504,
+            permissions_new: '528837279862336',
+            features: [Array]
+        },
+        {
+            id: '1153660752947859526',
+            name: 'Incidents',
+            icon: null,
+            owner: false,
+            permissions: 238538311,
+            permissions_new: '560723251416647',
+            features: []
+        }
     ],
-    email_user: "jhondhernandez@uts.edu.co",
-    avatar_user: "d10692efaa653cb4d5e402e95bef6520"
+    email_user: 'jhondhernandez@uts.edu.co',
+    avatar_user: 'd10692efaa653cb4d5e402e95bef6520'
 });
 
 // ! CURSE

@@ -33,21 +33,27 @@ passport.use(new Strategy({
         const user = db.collection('user');
         let result = await user.find().toArray();
         if (result[0]) {
+            done(null, profile);
             console.log("usuario ya existente");
         } else {
-            let insert = await user.insertOne({
-                id_user: profile.id,
-                id_rol: 1,
-                name_user: profile.username,
-                servers: profile.guilds,
-                email_user: profile.email,
-                avatar_user:profile.avatar
-            });
-            console.log("Usuario agregado");
+            try {
+                let insert = await user.insertOne({
+                    id_user: profile.id,
+                    id_rol: 1,
+                    name_user: profile.username,
+                    servers: profile.guilds,
+                    email_user: profile.email,
+                    avatar_user: profile.avatar
+                });
+                done(null, profile);
+                console.log("Usuario agregado");
+            } catch (error) {
+                console.log("Un error al insertar el usuario", error);
+                done(error, null);
+            }
         }
-        done(null, profile);
     } catch (error) {
         console.log(error);
-        done(error, null);0
+        done(error, null); 0
     }
 }));
