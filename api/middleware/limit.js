@@ -2,7 +2,7 @@ import { rateLimit } from "express-rate-limit";
 
 const limit = rateLimit({
     windowMs:30*10000,
-    max:5,
+    max:10,
     legacyHeaders:true,
     standardHeaders:true,
     message: (req,res)=>{

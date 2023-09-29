@@ -20,3 +20,10 @@ This project aims to create a free course platform using React, inspired by the 
 We have the proposal to develop a free course platform based on React, taking as inspiration the fundamental operation of the successful Udemy platform. Our vision is to provide users with an accessible and versatile online learning experience, similar to what Udemy offers, but without any associated costs. The platform will offer a wide variety of courses in various areas, from technology to art and music, allowing students to access quality resources without financial barriers. Additionally, we plan to incorporate interactive features and progress tracking tools to improve the user experience and encourage effective and personalized learning.
 
 ![Imagen alt="Fallo al cargar la imagen"](./public/diagramaEduvverse.png)
+
+
+- Comando para correr los estilos de tailwind
+
+``` cmd
+npx tailwindcss -i ./src/index.css -o ./dist/output.css --watch
+```
