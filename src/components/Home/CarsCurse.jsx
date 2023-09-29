@@ -4,7 +4,7 @@ import { Card, CardHeader, CardBody, Image } from "@nextui-org/react";
 
 export default function CardCurse() {
     return (
-        <Card className="py-4 w-1/4 m-5 p-2 max-h-[350px]">
+        <Card className="py-4 w-1/4 m-5 p-2 ">
             <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
                 <p className="text-tiny uppercase font-bold">Daily Mix</p>
                 <small className="text-default-500">12 Tracks</small>

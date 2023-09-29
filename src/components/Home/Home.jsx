@@ -20,10 +20,10 @@ const videoStyle = {
 
 export const Home = () => {
     return <>
-        <header>
+        <div>
             <Header />
-        </header>
-        <body>
+        </div>
+        <div>
             <video
                 id="background-video"
                 src={video2}
@@ -34,6 +34,6 @@ export const Home = () => {
                 className="blur"
             />
             <Body />
-        </body>
+        </div>
     </>
 }
