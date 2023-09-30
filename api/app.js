@@ -39,13 +39,17 @@ app.use(router_login);
 app.use('/comment', router_comment);
 
 app.get('/get', (req, res) => {
-    console.log(req.isAuthenticated(true));
-    console.log(req.user);
+    console.log('Request received at /get');
+    console.log('Is authenticated:', req.isAuthenticated());
+    console.log('User data:', req.user);
+    console.log('Cookies:', req.cookies); // Puedes registrar las cookies aquí
+
     if (req.isAuthenticated()) {
-        console.log("asdasdsa")
-        return res.json(req.user)
+        console.log('User is authenticated');
+        return res.json(req.user);
     } else {
-        return res.status(401).send({ status: 401, message: "No authorized" })
+        console.log('User is not authenticated');
+        return res.status(401).send({ status: 401, message: "No authorized" });
     }
 })
 

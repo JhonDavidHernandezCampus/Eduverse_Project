@@ -13,15 +13,13 @@ export const Curso = ()=>{
     ws.postMessage({action:"funciona el Worker claro que si papito"});
 
     ws.addEventListener('message', (data)=>{
-        console.log(data);
+        console.log(data, "la data en la respuesta");
     })
 
     
 
     let url = window.location.href;
-    console.log(location);
     url = (url.split('/')).pop();
-    console.log(url);
     
 
     return <>
