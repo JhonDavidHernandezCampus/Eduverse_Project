@@ -15,11 +15,13 @@ const host = JSON.parse(process.env.SERVER);
 //* como guardamos la sesion, se ejecuta cuando nos autenticamos el parametro user que resivimos aqui es 
 //* lo que retornamos en el done de la autenticacion.
 passport.serializeUser((user, done) => {
-    done(null, user)
+    console.log("Serializando usuario:", user);
+    done(null, user.id);
 });
 //* esta se ejecuta cuando requiero los datos del usuario req.user me retorna lo que le coloque en la funcion done
 passport.deserializeUser((user, done) => {
-    done(null, user)
+    console.log("Deserializando usuario:", user);
+    done(null, user);
 });
 
 passport.use(new Strategy({
@@ -33,8 +35,9 @@ passport.use(new Strategy({
         const user = db.collection('user');
         let result = await user.find().toArray();
         if (result[0]) {
+            console.log(profile, "User retornado en la Strategy");
             done(null, profile);
-            console.log("usuario ya existente");
+            //console.log("usuario ya existente");
         } else {
             try {
                 let insert = await user.insertOne({
@@ -46,7 +49,7 @@ passport.use(new Strategy({
                     avatar_user: profile.avatar
                 });
                 done(null, profile);
-                console.log("Usuario agregado");
+                //console.log("Usuario agregado");
             } catch (error) {
                 console.log("Un error al insertar el usuario", error);
                 done(error, null);
@@ -57,3 +60,5 @@ passport.use(new Strategy({
         done(error, null); 0
     }
 }));
+
+export default passport;

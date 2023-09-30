@@ -15,6 +15,7 @@
     "@heroicons/react": "^2.0.18",
     "@nextui-org/react": "^2.1.13",
     "@react-icons/all-files": "^4.1.0",
+    "cookie-parser": "^1.4.6",
     "framer-motion": "^10.16.4",
     "install": "^0.13.0",
     "npm": "^10.1.0",

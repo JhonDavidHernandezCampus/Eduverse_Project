@@ -7,7 +7,7 @@ export default function Profile() {
     let name = "JhonHernandez";
 
     return (
-        <div className="flex items-center gap-4 mr-14 ml-5 ">
+        <div className="flex items-center gap-4 mr-14 ml-5">
             <Dropdown size="lg" placement="bottom-start">
                 <DropdownTrigger>
                     <User
@@ -23,8 +23,8 @@ export default function Profile() {
                 </DropdownTrigger>
                 <DropdownMenu aria-label="User Actions" variant="flat">
                     <DropdownItem key="profile" className="h-14 gap-2">
-                        <p className="font-bold">Signed in as</p>
-                        <p className="font-bold">@Jhonhernandez</p>
+                        <p className="font-bold text-xl">Signed in as</p>
+                        <p className="font-bold text-xl">@Jhonhernandez</p>
                     </DropdownItem>
                     <DropdownItem key="settings">
                         My Settings
