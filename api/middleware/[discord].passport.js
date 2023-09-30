@@ -15,10 +15,12 @@ const host = JSON.parse(process.env.SERVER);
 //* como guardamos la sesion, se ejecuta cuando nos autenticamos el parametro user que resivimos aqui es 
 //* lo que retornamos en el done de la autenticacion.
 passport.serializeUser((user, done) => {
+    console.log("1");
     done(null, user)
 });
 //* esta se ejecuta cuando requiero los datos del usuario req.user me retorna lo que le coloque en la funcion done
 passport.deserializeUser((user, done) => {
+    console.log("2");
     done(null, user)
 });
 
@@ -57,3 +59,5 @@ passport.use(new Strategy({
         done(error, null); 0
     }
 }));
+
+export default passport;

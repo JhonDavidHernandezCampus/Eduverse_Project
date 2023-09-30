@@ -1,9 +1,13 @@
 const peticionesApi = {
-    async curso (){
+    async user() {
         try {
-        
+            const response = await fetch('http://127.1.1.10:9001/get', {
+                credentials: 'include',
+            });
+            let user = await response.json();
+            return user;
         } catch (error) {
-            
+            return "error fetching data:" + error.name;
         }
     }
 }
@@ -11,8 +15,9 @@ const peticionesApi = {
 
 
 
-self.addEventListener('message', async (data)=>{
+self.addEventListener('message', async (data) => {
+    let user = await peticionesApi.user();
+    console.log("user en evento", user);
     console.log(data);
-    let respuesta= "la yo sabia que podia";
-    postMessage(respuesta);
+    postMessage(user);
 });

@@ -11,10 +11,7 @@ const app = Express();
 
 // ? Middleware basic
 
-app.use(cors({
-    origin: 'http://127.1.1.1:5226',
-    credentials: true,
-}));
+
 app.use(Express.json());
 app.use(Express.text());
 app.use(cookieParser());
@@ -30,6 +27,12 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(cors({
+    origin: 'http://127.1.1.1:5226',
+    credentials: true,
+}));
+
 
 // * Middleware of the aplication
 app.use(router_login);
