@@ -1,22 +1,26 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-import { Card, CardHeader, CardBody, Image } from "@nextui-org/react";
+import { Card, CardHeader, CardBody, Image, Button } from "@nextui-org/react";
 
-export default function CardCurse({title="NewCurso",img="./", description="descripcion del curso", duration="23 h"}) {
+export default function CardCurse({ title = "NewCurso", img = "./", description = "descripcion del curso", duracion = "23 h" }) {
     return (
-        <Card className="flex bg-yellow-50">
+        <Card className="">
             <CardHeader className="flex-col items-start">
-                <p className="text-tiny uppercase font-bold">{title}</p>
-                <small className="text-default-500">{duration}</small>
+                <p className=" uppercase font-bold">{title}</p>
+                <small className="text-default-500">{parseInt(((duracion/1000)/60)/60)} h</small>
                 <h4 className="font-bold text-large">{description}</h4>
             </CardHeader>
-            <CardBody className="overflow-visible py-2">
+            <CardBody className="flex justify-center items-center">
                 <Image
                     alt="Card background"
-                    className="object-cover rounded-xl"
                     src={img}
-                    width={270}
                 />
+                <Link to={`/cursos/${title}`}>
+                    <Button href="/local" color="success" className="z-30 font-serif text-xl w-32 h-12 mt-2">
+                        Ver
+                    </Button>
+                </Link>
             </CardBody>
         </Card>
     );
