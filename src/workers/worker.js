@@ -1,8 +1,9 @@
 const peticionesApi = {
     async user() {
         try {
-            const response = await fetch('http://127.1.1.10:9001/get', {
-                credentials: 'include',
+            let response = await fetch("http://127.1.1.1:9001/get", {
+                method: "GET",
+                credentials: "include",
             });
             let user = await response.json();
             return user;

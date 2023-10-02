@@ -12,11 +12,12 @@ dotenv.config();
 console.log("almenos se que esto se jecuta");
 const host = JSON.parse(process.env.SERVER);
 
+
 //* como guardamos la sesion, se ejecuta cuando nos autenticamos el parametro user que resivimos aqui es 
 //* lo que retornamos en el done de la autenticacion.
 passport.serializeUser((user, done) => {
-    console.log("Serializando usuario:", user);
-    done(null, user.id);
+    //console.log("Serializando usuario:", user);
+    done(null, user);
 });
 //* esta se ejecuta cuando requiero los datos del usuario req.user me retorna lo que le coloque en la funcion done
 passport.deserializeUser((user, done) => {
@@ -35,7 +36,6 @@ passport.use(new Strategy({
         const user = db.collection('user');
         let result = await user.find().toArray();
         if (result[0]) {
-            console.log(profile, "User retornado en la Strategy");
             done(null, profile);
             //console.log("usuario ya existente");
         } else {
