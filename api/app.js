@@ -26,7 +26,7 @@ app.use(session({
 }))
 
 app.use(passport.initialize());
-app.use(passport.session());
+app.use(passport.session()); 
 
 app.use(cors({
     origin: 'http://127.1.1.1:5226',
@@ -39,11 +39,6 @@ app.use(router_login);
 app.use('/comment', router_comment);
 
 app.get('/get', (req, res) => {
-    console.log('Request received at /get');
-    console.log('Is authenticated:', req.isAuthenticated());
-    console.log('User data:', req.user);
-    console.log('Cookies:', req.cookies); // Puedes registrar las cookies aquí
-
     if (req.isAuthenticated()) {
         console.log('User is authenticated');
         return res.json(req.user);

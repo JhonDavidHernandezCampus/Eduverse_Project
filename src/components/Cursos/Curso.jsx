@@ -10,10 +10,10 @@ export const Curso = ()=>{
     const [ curso, getCurso ] = useState();
     let ws;
     ws = new Worker('/src/workers/worker.js');
-    ws.postMessage({action:"funciona el Worker claro que si papito"});
+    ws.postMessage({});
 
     ws.addEventListener('message', (data)=>{
-        console.log(data, "la data en la respuesta");
+        console.log(data);
     })
 
     
