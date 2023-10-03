@@ -31,6 +31,7 @@ export const Curso = () => {
     }, []);
 
     const AsignarVideo = (seccionParametro, titulo) => {
+        console.log(seccionParametro, titulo);
         getSeccion(seccionParametro);
         getVideo(titulo);
         console.log(`http://192.168.128.23:5010/cursos/play?course=${url}&seccion=${seccion}&video=${video}`);
@@ -82,28 +83,9 @@ export const Curso = () => {
                     </div>
                 </div>
             ) : (
-                <Progress className="mt-[400px]" size="lg" aria-label="Loading..." value={80} />
+                <Progress className="ml-[250px] mt-[400px] w-[600px]" size="lg" aria-label="Loading..." value={89}/>
             )}
 
         </div>
     </>
 }
-
-/*
-<div className="">
-    <h1>{curso.nameCourse}</h1>
-    {curso.videos.map((seccion, index) => {
-        return (
-            <details key={index + 1}>
-                <summary>{seccion.sectionName}</summary>
-                {seccion.videos.map((info, i) => {
-                    return (
-                        <div key={`${i}.2`} className="ml-10 cursor-pointer">
-                            <summary onClick={() => AsignarVideo(index + 1, info.Titulo)}>{info.Titulo}</summary>
-                        </div>
-                    )
-                })}
-            </details>)
-    })}
-</div>
-*/
