@@ -1,12 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import './profile.css';
 
-import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Avatar, User } from "@nextui-org/react";
+import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Avatar, User, Skeleton } from "@nextui-org/react";
 
 export default function Profile() {
-    let name = "JhonHernandez";
+    const [user, setUser] = useState({});
+    let ws;
 
-    return (
+    useEffect(() => {
+        ws = new Worker('/src/workers/worker.js');
+
+        ws.addEventListener('message', (data) => {
+            //console.log("data de regreso", data.data);
+            setUser(data.data);
+        });
+
+        ws.postMessage({ data: {}, function: "user" });
+
+        return () => {
+            ws.terminate();
+        };
+    }, [])
+
+
+    return (user.id) ? (
         <div className="flex items-center gap-4 mr-14 ml-5">
             <Dropdown size="lg" placement="bottom-start">
                 <DropdownTrigger>
@@ -14,17 +31,16 @@ export default function Profile() {
                         as="button"
                         avatarProps={{
                             isBordered: true,
-                            src: "https://i.pravatar.cc/150?u=a042581f4e2902602",
+                            src: `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`,
                         }}
                         className="transition-transform text-white"
-                        description="@tonyreichert"
-                        name={name}
+                        description={`@${user.username}`}
+                        name={user.global_name}
                     />
                 </DropdownTrigger>
                 <DropdownMenu aria-label="User Actions" variant="flat">
                     <DropdownItem key="profile" className="h-14 gap-2">
                         <p className="font-bold text-xl">Signed in as</p>
-                        <p className="font-bold text-xl">@Jhonhernandez</p>
                     </DropdownItem>
                     <DropdownItem key="settings">
                         My Settings
@@ -43,6 +59,15 @@ export default function Profile() {
                     </DropdownItem>
                 </DropdownMenu>
             </Dropdown>
-        </div>
-    );
+        </div>) : (
+        <div className="max-w-[300px] w-full flex items-center gap-3">
+            <div>
+                <Skeleton className="flex rounded-full w-12 h-12" />
+            </div>
+            <div className="w-full flex flex-col gap-2">
+                <Skeleton className="h-3 w-3/5 rounded-lg" />
+                <Skeleton className="h-3 w-4/5 rounded-lg" />
+            </div>
+        </div>)
+
 }

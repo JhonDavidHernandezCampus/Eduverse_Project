@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import './login.css';
 
 /* 
@@ -8,29 +8,70 @@ import './login.css';
 */
 import { Button } from "@nextui-org/react";
 import { Tooltip } from "@nextui-org/react";
+import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure } from "@nextui-org/react";
+
 
 /* 
 * Imported od the react-icons
 **/
 
 import { FaDiscord } from 'react-icons/fa';
+import { AiFillWarning } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
 import { BiLogoApple } from 'react-icons/bi';
 import logo from "./../../assets/imglogo.png";
 
 
 export const Login = () => {
+    const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
-    const login = async()=> {
+    async function ServerOk() {
+
+    }
+
+
+    const login = async () => {
         try {
-            // let resp = await fetch(`http://127.1.1.10:9001/login`);
-            // console.log(resp);
-            window.location.href = "http://127.1.1.10:9001/login";
+            let serverOk = await (await fetch(`http://127.1.1.1:9001`)).json();
+            console.log("asa");
+            console.log(serverOk);
+            if (serverOk) {
+                try {
+                    window.location.href = "http://127.1.1.10:9001/login";
+                } catch (error) {
+                    console.log(error);
+                }
+            }
         } catch (error) {
-            
+            onOpenChange(true);
         }
+        
     }
     return <>
+        <Modal
+            backdrop="opaque"
+            isOpen={isOpen}
+            onOpenChange={onOpenChange}
+        >
+            <ModalContent>
+                {(onClose) => (
+                    <>
+                        <ModalHeader className="flex flex-col gap-1">Error in the Server</ModalHeader>
+                        <ModalBody className="">
+                            <AiFillWarning className="w-full h-56" />
+                        </ModalBody>
+                        <ModalFooter>
+                            <Button color="danger" variant="light" onPress={onClose}>
+                                Close
+                            </Button>
+                            <Button color="primary" onPress={onClose}>
+                                Action
+                            </Button>
+                        </ModalFooter>
+                    </>
+                )}
+            </ModalContent>
+        </Modal>
         <div className="flex p-24" id="container">
             <div className="flex backdrop-blur-sm bg-white/30 w-full rounded-[40px]">
                 <div className="flex flex-col justify-center items-center w-5/12 bg-black/60  rounded-l-[40px] " id="post">

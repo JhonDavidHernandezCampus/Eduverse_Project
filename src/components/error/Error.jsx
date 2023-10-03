@@ -4,7 +4,7 @@ import React from "react";
 export const Error = () => {
     const redired = async ()=>{
         try {
-            window.history.back();
+            window.location.reload();
         } catch (error) {
             
         }
