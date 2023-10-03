@@ -44,13 +44,13 @@ app.get('/get', (req, res) => {
         return res.json(req.user);
     } else {
         console.log('User is not authenticated');
-        return res.status(401).send({ status: 401, message: "No authorized" });
+        return res.status(401).send({ status: 401, session:false , message: "No authorized" });
     }
 })
 
 app.get('/', (req, res) => {
-    res.json({ server: true, message: "Server listening" });
+    res.json({ server: true,message: "Server listening" });
 })
 
 
-export default app;
+export default app; 

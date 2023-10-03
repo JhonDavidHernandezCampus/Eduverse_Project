@@ -21,7 +21,7 @@ passport.serializeUser((user, done) => {
 });
 //* esta se ejecuta cuando requiero los datos del usuario req.user me retorna lo que le coloque en la funcion done
 passport.deserializeUser((user, done) => {
-    console.log("Deserializando usuario:", user);
+    //console.log("Deserializando usuario:", user);
     done(null, user);
 });
 
