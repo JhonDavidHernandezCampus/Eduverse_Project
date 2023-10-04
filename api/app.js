@@ -26,7 +26,7 @@ app.use(session({
 }))
 
 app.use(passport.initialize());
-app.use(passport.session()); 
+app.use(passport.session());
 
 app.use(cors({
     origin: 'http://127.1.1.1:5226',
@@ -40,16 +40,34 @@ app.use('/comment', router_comment);
 
 app.get('/get', (req, res) => {
     if (req.isAuthenticated()) {
+        console.log(req.cookies);
         console.log('User is authenticated');
         return res.json(req.user);
     } else {
         console.log('User is not authenticated');
-        return res.status(401).send({ status: 401, session:false , message: "No authorized" });
+        return res.status(401).send({ status: 401, session: false, message: "No authorized" });
     }
-})
+});
+
+app.get('/sesion', (req, res) => {
+    console.log("hace lo de session");
+    if (req.isAuthenticated()) {
+        console.log('User is logged out');
+        req.logout(function(err) {
+            if (err) {
+                console.error(err);
+                return res.status(500).json({ message: "Error while logging out" });
+            }
+            return res.json({ message: "User logged out" });
+        });
+    } else {
+        console.log('User is not authenticated');
+        return res.status(401).send({ status: 401, session: false, message: "No authorized" });
+    }
+});
 
 app.get('/', (req, res) => {
-    res.json({ server: true,message: "Server listening" });
+    res.json({ server: true, message: "Server listening" });
 })
 
 

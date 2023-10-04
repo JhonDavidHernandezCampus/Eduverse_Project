@@ -4,7 +4,7 @@ import React from "react";
 export const Error = () => {
     const redired = async ()=>{
         try {
-            window.location.reload();
+            window.location.href = "http://127.1.1.1:5226/dashboard";
         } catch (error) {
             
         }

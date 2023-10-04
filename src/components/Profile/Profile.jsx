@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import './profile.css';
+import { useAuth } from "../Contexts/ContextsSesion";
 
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Avatar, User, Skeleton } from "@nextui-org/react";
 
 export default function Profile() {
     const [user, setUser] = useState({});
+    const {logOut} = useAuth();
     let ws;
 
     useEffect(() => {
@@ -14,13 +16,13 @@ export default function Profile() {
             //console.log("data de regreso", data.data);
             setUser(data.data);
         });
-
         ws.postMessage({ data: {}, function: "user" });
 
         return () => {
             ws.terminate();
         };
-    }, [])
+    }, []);
+
 
 
     return (user.id) ? (
@@ -39,7 +41,7 @@ export default function Profile() {
                     />
                 </DropdownTrigger>
                 <DropdownMenu aria-label="User Actions" variant="flat">
-                    <DropdownItem key="profile" className="h-14 gap-2">
+                    <DropdownItem key="profile" className="h-14 gap-2" textValue="User Actions">
                         <p className="font-bold text-xl">Signed in as</p>
                     </DropdownItem>
                     <DropdownItem key="settings">
@@ -54,7 +56,7 @@ export default function Profile() {
                     <DropdownItem key="help_and_feedback">
                         Help & Feedback
                     </DropdownItem>
-                    <DropdownItem key="logout" color="danger">
+                    <DropdownItem key="logout" color="danger" onClick={logOut}>
                         Log Out
                     </DropdownItem>
                 </DropdownMenu>
