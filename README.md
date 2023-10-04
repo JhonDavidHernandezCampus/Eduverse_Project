@@ -27,3 +27,16 @@ We have the proposal to develop a free course platform based on React, taking as
 ``` cmd
 npx tailwindcss -i ./src/index.css -o ./dist/output.css --watch
 ```
+
+# Importante tener en cuenta
+## Version de npm sobre la que esta el proyecto
+``` cmd
+npm --version
+10.1.0 
+```
+
+## Version de node sobre la que esta el proyecto
+``` cmd
+node --version
+v18.18.0
+```
