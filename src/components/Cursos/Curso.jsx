@@ -13,6 +13,9 @@ export const Curso = () => {
     const [video, getVideo] = useState();
     let ws;
 
+    const clouster = JSON.parse(import.meta.env.VITE_CLOUSTER);
+
+
     let url = (window.location.href.split('/')).pop();
 
     useEffect(() => {
@@ -21,16 +24,16 @@ export const Curso = () => {
 
         ws.addEventListener('message', (data) => {
             getCurso(data.data);
-            // console.log(curso);
+            // //console.log(curso);
         })
 
     }, []);
 
     const AsignarVideo = (seccionParametro, titulo) => {
-        console.log(seccionParametro, titulo);
+        //console.log(seccionParametro, titulo);
         getSeccion(seccionParametro);
         getVideo(titulo);
-        console.log(`http://192.168.128.23:5010/cursos/play?course=${url}&seccion=${seccion}&video=${video}`);
+        //console.log(`http://${clouster.localhost}:${clouster.port}/cursos/play?course=${url}&seccion=${seccion}&video=${video}`);
 
     }
     return <>
@@ -43,14 +46,14 @@ export const Curso = () => {
                             <video
                                 autoPlay
                                 className="w-[1000px] h-full ml-5"
-                                src={`http://192.168.128.23:5010/cursos/play?course=${url}&seccion=${seccion}&video=${video}`}
+                                src={`http://${clouster.localhost}:${clouster.port}/cursos/play?course=${url}&seccion=${seccion}&video=${video}`}
                                 controls
                             />
                         ) : (
                             <video
                                 autoPlay
                                 className="w-[1000px] h-full"
-                                src={`http://192.168.128.23:5010/cursos/play?course=${url}&seccion=1&video=${curso.videos[0].videos[0].video}`}
+                                src={`http://${clouster.localhost}:${clouster.port}/cursos/play?course=${url}&seccion=1&video=${curso.videos[0].videos[0].video}`}
                                 controls
                             />
                         )}

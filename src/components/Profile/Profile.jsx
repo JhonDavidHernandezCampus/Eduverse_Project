@@ -5,6 +5,7 @@ import { useAuth } from "../Contexts/ContextsSesion";
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Avatar, User, Skeleton } from "@nextui-org/react";
 
 export default function Profile() {
+    const port = JSON.parse(import.meta.env.VITE_SERVER);
     const [user, setUser] = useState({});
     const {logOut} = useAuth();
     let ws;
@@ -13,10 +14,10 @@ export default function Profile() {
         ws = new Worker('/src/workers/worker.js');
 
         ws.addEventListener('message', (data) => {
-            //console.log("data de regreso", data.data);
+            ////console.log("data de regreso", data.data);
             setUser(data.data);
         });
-        ws.postMessage({ data: {}, function: "user" });
+        ws.postMessage({ data: port, function: "user" });
 
         return () => {
             ws.terminate();

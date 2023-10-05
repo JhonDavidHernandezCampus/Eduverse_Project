@@ -25,21 +25,17 @@ import logo from "./../../assets/imglogo.png";
 export const Login = () => {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
-    async function ServerOk() {
-
-    }
-
+    const serve = JSON.parse(import.meta.env.VITE_SERVER);
 
     const login = async () => {
         try {
-            let serverOk = await (await fetch(`http://127.1.1.1:9001`)).json();
-            console.log("asa");
-            console.log(serverOk);
+            let serverOk = await (await fetch(`http://${serve.localhost}:${serve.port}`)).json();
+
             if (serverOk) {
                 try {
-                    window.location.href = "http://127.1.1.10:9001/login";
+                    window.location.href = `http://${serve.localhost}:${serve.port}/login`;
                 } catch (error) {
-                    console.log(error);
+                    //console.log(error);
                 }
             }
         } catch (error) {

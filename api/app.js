@@ -40,19 +40,19 @@ app.use('/comment', router_comment);
 
 app.get('/get', (req, res) => {
     if (req.isAuthenticated()) {
-        console.log(req.cookies);
-        console.log('User is authenticated');
+        //console.log(req.cookies);
+        //console.log('User is authenticated');
         return res.json(req.user);
     } else {
-        console.log('User is not authenticated');
+        //console.log('User is not authenticated');
         return res.status(401).send({ status: 401, session: false, message: "No authorized" });
     }
 });
 
 app.get('/sesion', (req, res) => {
-    console.log("hace lo de session");
+    //console.log("hace lo de session");
     if (req.isAuthenticated()) {
-        console.log('User is logged out');
+        //console.log('User is logged out');
         req.logout(function(err) {
             if (err) {
                 console.error(err);
@@ -61,7 +61,7 @@ app.get('/sesion', (req, res) => {
             return res.json({ message: "User logged out" });
         });
     } else {
-        console.log('User is not authenticated');
+        //console.log('User is not authenticated');
         return res.status(401).send({ status: 401, session: false, message: "No authorized" });
     }
 });

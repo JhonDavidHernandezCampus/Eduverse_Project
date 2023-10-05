@@ -9,19 +9,19 @@ dotenv.config();
 // ? El serializaUser y el deserializeUser es para guardar los datos del usuario
 // ? y que de esta forma no se tenga que iniciar sesion siempre 
 
-console.log("almenos se que esto se jecuta");
-const host = JSON.parse(process.env.SERVER);
+//console.log("almenos se que esto se jecuta");
+const host = JSON.parse(process.env.VITE_SERVER);
 
 
 //* como guardamos la sesion, se ejecuta cuando nos autenticamos el parametro user que resivimos aqui es 
 //* lo que retornamos en el done de la autenticacion.
 passport.serializeUser((user, done) => {
-    //console.log("Serializando usuario:", user);
+    ////console.log("Serializando usuario:", user);
     done(null, user);
 });
 //* esta se ejecuta cuando requiero los datos del usuario req.user me retorna lo que le coloque en la funcion done
 passport.deserializeUser((user, done) => {
-    //console.log("Deserializando usuario:", user);
+    ////console.log("Deserializando usuario:", user);
     done(null, user);
 });
 
@@ -37,7 +37,7 @@ passport.use(new Strategy({
         let result = await user.find().toArray();
         if (result[0]) {
             done(null, profile);
-            //console.log("usuario ya existente");
+            ////console.log("usuario ya existente");
         } else {
             try {
                 let insert = await user.insertOne({
@@ -49,7 +49,7 @@ passport.use(new Strategy({
                     avatar_user: profile.avatar
                 });
                 done(null, profile);
-                //console.log("Usuario agregado");
+                ////console.log("Usuario agregado");
             } catch (error) {
                 console.log("Un error al insertar el usuario", error);
                 done(error, null);

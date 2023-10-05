@@ -1,6 +1,8 @@
 import { useContext, createContext, useState, useEffect } from "react";
 
+
 const SessionContexts = createContext();
+
 
 export const useAuth = () => {
     const context = useContext(SessionContexts);
@@ -12,13 +14,13 @@ export const AuthProvider = ({ children }) => {
     const [stateSession, getSesion] = useState(false);
 
     useEffect(() => {
-        const validSession = ()=>{
+        const validSession = () => {
             const cookie = decodeURIComponent(document.cookie);
             const session = cookie.split("=")[0];
 
             if (session) {
                 getSesion(true);
-            }else{
+            } else {
                 getSesion(false);
             }
         }
@@ -26,22 +28,25 @@ export const AuthProvider = ({ children }) => {
     }, [])
 
     const logOut = async () => {
+        const serve = JSON.parse(import.meta.env.VITE_SERVER);
+        const client_port = import.meta.env.VITE_PORT;
+        const client_host = import.meta.env.VITE_HOST;
         try {
-            let response = await fetch(`http://127.1.1.1:9001/sesion`, {
+            let response = await fetch(`http://${serve.localhost}:${serve.port}/sesion`, {
                 method: "GET",
                 credentials: "include",
             });
-            console.log(response);
+            //console.log(response);
         } catch (error) {
-            console.log(error);
+            //console.log(error);
         }
         document.cookie = `connect.sid=;  expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-        console.log(document.cookie);
-        window.location.href = "http://127.1.1.1:5226/";
+        //console.log(document.cookie);
+        window.location.href = `http://${client_host}:${client_port}/`;
     }
 
-    return(
-        <SessionContexts.Provider value={{stateSession , logOut}}>
+    return (
+        <SessionContexts.Provider value={{ stateSession, logOut }}>
             {children}
         </SessionContexts.Provider>
     )

@@ -1,21 +1,23 @@
+
 const peticionesApi = {
-    async getVideos(data){
-        let url= data.data.url;
+    async getVideos(data) {
+        let url = data.data.url;
         try {
-            let response = await fetch(`http://192.168.128.23:5010/cursos/v2?course=${url}`,{
-                method:"GET"
+            let response = await fetch(`http://192.168.128.23:5010/cursos/v2?course=${url}`, {
+                method: "GET"
             });
             response = await response.json();
-            // console.log(response);
+            // //console.log(response);
             return response;
         } catch (error) {
-            return {Message:"Error al realizar la consulta al API"}
+            return { Message: "Error al realizar la consulta al API" }
         }
     },
 
-    async user() {
+    async user(data) {
         try {
-            let response = await fetch("http://127.1.1.1:9001/get", {
+            let serve = data.data;
+            let response = await fetch(`http://${serve.localhost}:${serve.port}/get`, {
                 method: "GET",
                 credentials: "include",
             });
@@ -26,9 +28,6 @@ const peticionesApi = {
         }
     }
 }
-
-
-
 
 self.addEventListener('message', async (data) => {
     let fuction = data.data.function;
