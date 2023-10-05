@@ -7,7 +7,7 @@ const peticionesApi = {
                 method: "GET"
             });
             response = await response.json();
-            // console.log(response);
+            // //console.log(response);
             return response;
         } catch (error) {
             return { Message: "Error al realizar la consulta al API" }

@@ -24,16 +24,16 @@ export const Curso = () => {
 
         ws.addEventListener('message', (data) => {
             getCurso(data.data);
-            // console.log(curso);
+            // //console.log(curso);
         })
 
     }, []);
 
     const AsignarVideo = (seccionParametro, titulo) => {
-        console.log(seccionParametro, titulo);
+        //console.log(seccionParametro, titulo);
         getSeccion(seccionParametro);
         getVideo(titulo);
-        console.log(`http://${clouster.localhost}:${clouster.port}/cursos/play?course=${url}&seccion=${seccion}&video=${video}`);
+        //console.log(`http://${clouster.localhost}:${clouster.port}/cursos/play?course=${url}&seccion=${seccion}&video=${video}`);
 
     }
     return <>

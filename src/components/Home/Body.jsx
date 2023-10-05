@@ -8,11 +8,11 @@ export const Body = () => {
         async function datosApi() {
             try {
                 let respu = await (await fetch(`http://192.168.128.23:5010/cursos/all`)).json();
-                //console.log(respu, "respuesta del servidor");
+                ////console.log(respu, "respuesta del servidor");
                 if (!Array.isArray(respu)) throw "Error in serve";
                 setCursos(respu);
             } catch (error) {
-                console.log({ error: "Petition not fount", message: error });
+                //console.log({ error: "Petition not fount", message: error });
             }
         }
         datosApi();

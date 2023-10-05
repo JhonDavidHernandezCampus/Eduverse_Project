@@ -35,7 +35,7 @@ export const Login = () => {
                 try {
                     window.location.href = `http://${serve.localhost}:${serve.port}/login`;
                 } catch (error) {
-                    console.log(error);
+                    //console.log(error);
                 }
             }
         } catch (error) {

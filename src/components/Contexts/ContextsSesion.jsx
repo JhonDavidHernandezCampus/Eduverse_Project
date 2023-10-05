@@ -36,12 +36,12 @@ export const AuthProvider = ({ children }) => {
                 method: "GET",
                 credentials: "include",
             });
-            console.log(response);
+            //console.log(response);
         } catch (error) {
-            console.log(error);
+            //console.log(error);
         }
         document.cookie = `connect.sid=;  expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-        console.log(document.cookie);
+        //console.log(document.cookie);
         window.location.href = `http://${client_host}:${client_port}/`;
     }
 

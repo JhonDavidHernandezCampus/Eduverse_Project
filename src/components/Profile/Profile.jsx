@@ -14,7 +14,7 @@ export default function Profile() {
         ws = new Worker('/src/workers/worker.js');
 
         ws.addEventListener('message', (data) => {
-            //console.log("data de regreso", data.data);
+            ////console.log("data de regreso", data.data);
             setUser(data.data);
         });
         ws.postMessage({ data: port, function: "user" });
