@@ -10,7 +10,7 @@ dotenv.config();
 // ? y que de esta forma no se tenga que iniciar sesion siempre 
 
 console.log("almenos se que esto se jecuta");
-const host = JSON.parse(process.env.SERVER);
+const host = JSON.parse(process.env.VITE_SERVER);
 
 
 //* como guardamos la sesion, se ejecuta cuando nos autenticamos el parametro user que resivimos aqui es 

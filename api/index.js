@@ -6,7 +6,7 @@ Dotenv.config();
 
 const serve = () => {
     try {
-        let ports = JSON.parse(process.env.SERVER)
+        let ports = JSON.parse(process.env.VITE_SERVER)
         let config = {
             localhost: ports.localhost,
             port: ports.port
