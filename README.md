@@ -40,3 +40,23 @@ npm --version
 node --version
 v18.18.0
 ```
+- Una vez seguros de tener estas versiones instalamos las dependencias necesarias.
+```cmd
+npm i o npm update
+
+```
+
+# Como funciona la aplicacion
+
+### El inicio de la aplicacion nos dara la obcion de loguearnos por discord.
+![Imagen alt="Fallo al cargar la imagen"](./public/login.png)
+
+### Una vez estamos logueados dentraremos a la pagina principal que nos mostrara todos los cursos disponibles
+![Imagen alt="Fallo al cargar la imagen"](./public/dashboard.png)
+
+### Si ingresamos a mirar un curso nos mostrara el curso selecionado y reproduciendo por defecto el primer video del curso
+![Imagen alt="Fallo al cargar la imagen"](./public/curso.png)
+
+### Y podras terminar tu session dandole click al perfil de usuario y en el boton logOut
+![Imagen alt="Fallo al cargar la imagen"](./public/logout.png)
+
