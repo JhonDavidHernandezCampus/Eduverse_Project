@@ -46,6 +46,24 @@ npm i o npm update
 
 ```
 
+
+
+Correr el frontend
+
+``````
+npm run dev
+``````
+
+
+
+Correr el backend
+
+``````
+npm run serve
+``````
+
+
+
 # Como funciona la aplicacion
 
 ### El inicio de la aplicacion nos dara la obcion de loguearnos por discord.
